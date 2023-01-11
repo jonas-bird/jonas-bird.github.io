@@ -1,0 +1,25 @@
+#+TITLE Can I get organized
+
+
+* Describe the problem
+1. Write up a descritption of the problems I have keeping track of tasks
+2. Humorous explanation of the large number of notes I seem to make and never get back to. 
+
+* Trying out different systems
++ Describe the difference between what I thought about the system and what I actually found
++ Rate how well the different linux tools integrate with each system 
+  - ease of setup
+  - how well does the tool integrate with the system
+  - does it play well with other tools
+  - integration with note taking tools (should I write an article about note taking tools? Lots of material on the subject already out there)
+  - can I stick with the tool? Would a different tool make it easier to stick with the system
+  - I need to set up something with todo.txt
+
+* Final thoughts - promise possible update on how well the system holds up over the long run.
+
+
+* Setting up taskwarrior to work with the GTD system -
++ I want to make ure that my prompt reflects the items in my inbox rather than all tasks
++ I need to sort out my tasks into contexts and projects
++ go over plugins and interfaces
++ taskopen and tasknote....
