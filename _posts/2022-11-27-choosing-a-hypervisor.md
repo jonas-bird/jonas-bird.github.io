@@ -1,7 +1,7 @@
 ---
 title: Choosing a hypervisor
 date: 2022-11-27 22:12:18 -0500
-categories: [Technology, Operating Systems]
+categories: [technology, operating systems]
 tags: [proxmox, linux, servers]     # TAG names should always be lowercase
 toc: false
 ---
