@@ -4,16 +4,16 @@ icon: fas fa-info-circle
 order: 5
 ---
 
-## Currently working on:
+## **Currently working on:**
 
-Setting up for an attempt at the Red Hat Certified System Administrator.  
+Preparing for the Red Hat Certified System Administrator exam.  
 Continuing to improve my coding and network automation skills.  
 Finding an IT job in New York City
 
 #### [Learning Go](https://github.com/jonas-bird/learning-go) 
-I have started learning Go (or Golang if you prefer). This repo is me coding along (slowly, as I should be focused on Network Administration and Python) with [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world) by Chris James. I have also been moving along the Go track on [exercisim.io](https://exercism.org/profiles/jonas-bird)
+I have started learning Go (or Golang if you prefer). This repo is me coding along (free time project that I can only put a few hours a week into) with [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world) by Chris James. I have also been moving along the Go track on [exercisim.io](https://exercism.org/profiles/jonas-bird)
 
-## Past Projects 
+## **Past projects** 
 
 ### Python 
 
@@ -29,9 +29,9 @@ This is an example of a script that was put together under time pressure to get 
 This project makes use of the Python Imaging Library to perform some common image manipulation tasks (rotate, resize, change format) on a folder of images
 
 
-### HTML / CSS 
+### **HTML / CSS** 
 
-While I am not a front-end developer or designer I have worked on some projects for courses that I think turned out nicely:
+An IT professional must be able to support web-based applications as well as traditional web-pages. I think it is important to understand the skills used to create them, as well as maintain them.   
 
 #### [Animal Trading Cards](https://jonas-bird.github.io/accenture-itpnd-animal-card/)
 
@@ -42,8 +42,8 @@ One of the earlier projects in the Intro to Programming nano-Degree I completed 
 
 My version of the common introductory JavaScript project. [Code](https://jonas-bird.github.io/Udacity-IPnD-PixelArt/) is available on GitHub 
 
-### Writing 
+### **Writing** 
 
-#### [SEO copy: Estate Millworks](https://jonas-bird.github.io/writing-portfolio/)
+#### [SEO Copy: Estate Millworks](https://jonas-bird.github.io/writing-portfolio/)
 
 While going through some old backups I came across some copy I wrote quite a long time ago. While I don't plan on working directly in marketing/SEO, being able to communicate effectively is an important skill for a technology professional, so I thought it should be included here.

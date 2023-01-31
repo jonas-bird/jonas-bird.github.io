@@ -11,7 +11,7 @@ Hybrid Network/Cloud Engineer and coder. Adept at managing difficult projects, c
 
 [My HTML Resume](https://jonas-bird.github.io/Jonas-Bird-HTML-Resume/) or [download](https://github.com/jonas-bird/jonas-bird/raw/master/assets/JonasBird-OnePageResume-2023.pdf) the one page pdf summary
 
-While I have held a range of different jobs over the years, one thing that has unified the ones I have been successful with is troubleshooting. As much as the idea of a job where I simply take on a pre-measured amount of work and get through it _seems_ appealing - my mind does not work that way. While constantly chasing after gremlins can be fun and rewarding as a passtime, I find automation to be the logical way to preemptively use my itch to find out how things work to build things that work better, rather than just taking apart and fixing the things that are not working the way they are supposed to. 
+While I have held a range of different jobs over the years, one thing that has unified the ones I have been successful with is troubleshooting. As much as the idea of a job where I simply take on a pre-measured amount of work and get through it _seems_ appealing - my mind does not work that way. While constantly chasing after gremlins can be fun and rewarding as a pass-time, I find automation to be the logical way to preemptively use my itch to find out how things work to build things that work better, rather than just taking apart and fixing the things that are not working the way they are supposed to. 
 
 ### Certifications 
 Cisco Certified Network Associate: Nov. 2022  
