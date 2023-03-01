@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
 I am a long term Linux enthusiast, who recently started coding. I have a background in electronics repair, and enjoy taking on DIY projects whenever I have time and/or space.  
