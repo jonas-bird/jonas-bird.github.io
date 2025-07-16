@@ -1,7 +1,7 @@
 ---
 title: Learn Wireshark
 date: 2025-02-01 01:01:01 -05:00
-categories: [technology, networking]
+categories: [networking]
 tags: [networking cybersecurity]     # TAG names should always be lowercase
 ---
 
