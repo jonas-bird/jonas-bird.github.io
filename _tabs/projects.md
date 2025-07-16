@@ -6,7 +6,8 @@ order: 2
 
 ## **Currently working on:**
 
-Preparing for the Red Hat Certified System Administrator exam.  
+Getting good at programming.
+Spending too much time on [Hack the box](https://hackthebox.eu)
 Continuing to improve my coding and network automation skills.  
 Finding an IT job in New York City
 
