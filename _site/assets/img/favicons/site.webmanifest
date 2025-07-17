@@ -1,0 +1,23 @@
+
+
+{
+  "name": "Jonas Bird's Lab",
+  "short_name": "Jonas Bird's Lab",
+  "description": "I am a long-term Linux enthusiast, looking for a job in networking (recent CCNA!) or IT automation. In my free time I enjoy coding,  audio recording equipment/synthesizers, Lisp, and learning how things work. Getting my hands dirty in the cloud and looking for work.",
+  "icons": [
+    {
+      "src": "/assets/img/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/index.html",
+  "theme_color": "#2a1e6b",
+  "background_color": "#ffffff",
+  "display": "fullscreen"
+}
+

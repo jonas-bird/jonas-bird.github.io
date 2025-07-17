@@ -1,0 +1,191 @@
+[
+  
+  {
+    "title": "Learn Wireshark",
+    "url": "/posts/learn-wireshark/",
+    "categories": "networking",
+    "tags": "networking cybersecurity",
+    "date": "2025-02-01 01:01:01 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "NoteThere are way to many ‘Wireshark Deep Dive’ articles that cover the same introductory material (how to capture from your ethernet port, a basic explanation of display filters, and how to follow...",
+    "content": "NoteThere are way to many ‘Wireshark Deep Dive’ articles that cover the same introductory material (how to capture from your ethernet port, a basic explanation of display filters, and how to follow a conversation). I have no intention of adding to the noise, and am not at the point where I can offer anything better than the current experts. What I am providing is a list of some resources I found helpful, and some advice to people getting started working with Wireshark.IntroAfter spending several months focused on reverse engineering and binary exploitation I decided to dive into ‘blue team’ topics. While taking on TryHackMe’s Advent of Cyber side quests I decided that I while I could use Wireshark, I could also be better with it.Advice  Learn the basics of networking first. While Wireshark can be a useful tool to learn how a protocol works, if you are going to use it in a meaningful way I would expect you to already have a decent amount of theoretical knowledge. By a decent amount I mean Network+/CCNA level. I am sure that with cybersecurity being a hyped field there are people hoping that it is not that hard and they can just ‘learn where to click’ - I used to teach basic computer skills classes, it didn’t work for Excel then and it REALLY can’t work for cybersecurity. If you are trying to use Wireshark to get a better grasp of networking, get a copy of a CCNA study guide (it does not need to be the current one, unless you are planning on taking the CCNA), or TCP IP Illustrated  Read RFCs… A good place to start might be DNS Protocol Related Documents since the problem is ‘always DNS’  Look at a lot of pcaps. Collect pcaps! Healthy traffic, malware generated/C2/IOC filled traffic, your homelab’s baseline traffic, Windows traffic, Linux traffic… Especially spend time on boring pcaps. One of the more difficult things to learn through self-study is what business as usual is supposed to look like!Some of the sources for pcaps I have come across:          Netresec links to PCAP Files      https://weberblog.net/the-ultimate-pcap/      Unit 42 from PaloAlto put up Wireshark related material with useful pcaps to study Important: if you are working with a pcap of malware being transferred and extract the file you now have that malware on your computer… Best bet is to use a VM of an OS other than the target one. Unless you know what you are doing and want to detonate the malware and observe its traffic. If you are a malware analyst you are probably not reading this post though.        Use a tool like Scapy to write scripts that generate packets. You can also try running various exploit in a safely isolated environment (see warning above) to see what the traffic looks like.  Take the time to adjust coloring rules, column layout, etc. Most of the books and courses I have gone through start with a guide on setting up Wireshark the way the instructor likes. I found that fairly shortly I started wanting to adjust things (starting with making the coloring rules darkmode friendly) Spending some time building profiles will make using Wireshark a lot faster down the road!Youtube VideosChris Greer is an expert. He coined the term Packet Head and has a huge amount of experience working with Wireshark. His knowledge, enthusiasm (for the topic, and for teaching), and earnest delivery help make the technical topic approachable.Unit 42 of Palo Alto has a video series that covers some of the basics as well as looking at examples of malware/c2 traffic.There are probably other great resources out there, but they are hard to find in the sea of bite-sized introductory materialBooksAlways RTFM beyond that -I can personally recommend Practical Packet Analysis I have the 2’nd edition and read it cover-to-cover while referring to Chris Greer’s videos on each topic for additional information. Conversely I can say Mastering Wireshark put me off buying IT related books. There are a bunch of older books out there, as well as other current books that seem to cover the same basic material. There are also a few security focused books focused on Wireshark that I am still working through - Wireshark for Security Professionals looks good (it includes a lab environment setup), and Tactical Wireshark is also on my list of books to try and find a copy of.CoursesIf you learn from online classes effectively you could do worse than take one of Chris Greer’s coursesI tend to learn better from books, so I have not surveyed the options available extensively. I have taken David Bombal’s course, it was decent. If you really need some proof that you have studied the material, than you are probably best off figuring out what will be viewed as the most likely to impress and focus on getting that.Final ThoughtsWireshark is one of the most powerful diagnostic tools available to network engineers, security analysts, basically anyone working with a network."
+  },
+  
+  {
+    "title": "What is Kerberos?",
+    "url": "/posts/Kerberos/",
+    "categories": "security",
+    "tags": "security, network, kerberos",
+    "date": "2023-10-23 14:50:01 -0400",
+    
+
+
+
+
+
+    
+    "snippet": "What is Kerberos?I first encountered Kerberos the summer before going off to Carnegie Mellon University. I received an email with instructions on getting access to the campus network that included ...",
+    "content": "What is Kerberos?I first encountered Kerberos the summer before going off to Carnegie Mellon University. I received an email with instructions on getting access to the campus network that included setting up Kerberos. Despite being one of the few students taking programming courses at my high school, and being part of the team that went to a state wide programming competition, this was a new to me. Later in an informal discussion on what not to do on the campus network the name Kerberos came up again. When I decided to look into what it was the explanation was enough to make me decided to leave it at ‘it lets me authenticate’ Since then I have become a lot more knowledgeable when it comes to IT and networking, and even have played around with ways of bypassing it on sites like Tryhackme.com and hackthebox.eu When it comes to explaining what is going on in a ‘simple’ way though… I am reminded of those logic puzzles where you need to figure out how to get 3 things across a river in a boat that only holds 1 without while a wolf makes coleslaw as a side-dish… except instead of a wolf there is a 3 headed dog that is handing out different types of tickets.I came across my notes for an assignment from a Windows server administration course explaining how Kerberos works and thought putting them up might be useful (at least to me next time I need to explain AD security)Description of the problemWouldn’t it be nice if resources could be kept on multiple servers and accessed from client workstations instead of having a large computer with dumb terminals?Much like once you have signed into your Gmail you can access your Google Drive, Docs, and other sites, IT staff needed a way to centralize the authentication process on an organization’s internal network. This way a user could access resources on multiple servers and access their files from multiple workstations, without needing to have an account with proper permissions set up on every single computer, and without needing to log in to every single machine individually.The basic goals of the system are:  Scalability: having account data on each server (file, application, mail, etc) does not scale  Security: how do we keep user’s files safe? How do we ensure we know who accessed a resource at what time? How do we make sure that network resources are available to the right people?  Convenience: If the user finds it too burdensome to use than the software won’t be adopted or will be circumvented through ‘shadow IT’ creating a less secure alternative          the user should not need to enter their credentials for each service. This will also help keep them from choosing easy to type and easy to guess passwords.      similarly the user should be able to stay logged in for most, if not all of their workday. If they need to re-enter their credentials constantly they will make local copies of as much as possible as well as use weak credentials that are easy to type.      Solution: Users AND services have passwords  only Kerberos in the form of the Key Distribution Center has all the passwords  to prevent the user from learning the service’s password and bypassing proper authentication (logging in to the service as a different user, etc) when you have authenticated with Kerberos you are sent a Ticket that contains a version of your username encrypted using the services password (which you don’t know)Kerberos provides a way for a user to authenticate with multiple networked servers without needing to create and maintain passwords (a shared secret) with each server (some of which might be running multiple software services that require authentication to use) The basic idea is the same as sending someone a locked box to give to someone, though in this case you could say there is an outer box locked with a key the intermediate recipient has a copy of. The basic idea is not that complicated once the jargon and acronyms are put to the side.The Devil is in the DetailsWhile convenience is mostly a matter of keeping the user from needing to think about authentication, security requires trying to think of the ways an attacker might try to attack the service. The primary issue is “How to set up a system that allows a user to have a shared secret with a server they have not previously interacted with over an open (anyone can see the data being sent by anyone else) network?”Another less obvious requirement of keeping the system secure is that you can’t just give the end user a token to a service that they can use at any time or from any location. Besides the fact that this would mean that if an attacker compromised a workstation once they would persistent access every single service that the user(s) on the workstation had accessed. It would also make it impossible to manage changes to user’s authorization.Some more of the requirements:  no sending plaintext passwords over the network (to the service or to the KDC)  a way of logging (auditing) who requested access to what when  the user needs to authenticate himself to the service AND the service needs to authenticate itself to the user  protection against replay attacks - an attacker can’t just resend the same data that a user sent to get access to the serverOutline of the steps involvedKey terms:  Key Distribution Center (KDC) the service that provides Kerberos authenticationMade up of:          Authentication service (AS): This authenticates users when the initially access a service      Ticket granting service (TGS): Allows you to authenticate yourself with a ticket rather than a password.      Kerberos database: This can be LDAP or AD, a place to store credentials        Authenticator:          encrypted with the user’s session key (sent by the Authentication service to the user at the initial login)      consists of: User ID and timestamp network address?      needed to prevent REPLAY ATTACKS      only valid for a short period of time        Ticket-Granting-Ticket: used instead of a password to get a service specific ticket from the TGS.  Session Key: Serves as a shared secret between the service and the user.          ticket owner gets a copy as part of the reply from Kerberos      the service gets the session key from the encrypted (with the password shared between Kerberos and the service) ticket      Steps involved  the local workstation prompts the user for the username and password and sends:          Security Identifier (SID)      name of requested service      IP address      desired lifetime of the Ticket granting ticket (TGT) defaults to 10 hours (used to be 8 maybe?)      Note that you are not sending the password of the user.        If the server finds a match for the user it sends back          Security identifier (SID) /whose?/      TGS ID      Timestamp      User’s IP address      TGT lifetime      TGT      Session key        Then a second msg is sent:          TGS ID      Timestamp      Session key      Note that these msgs are encrypted using the user’s password        The user then sends the TGT to the TGS with the Kerberos ID of the service they are requesting access to  Another message is sent from the user to the service containing the Authenticator  The service decrypts the ticket and has the following information          ticket’s lifespan and timestamp      the username the ticket was issued to      the network address the user the ticket was granted to      the session key        The service than uses the session key to decrypt the authenticatorAn attempt at explaining this in a (very) short narrativeIn effect to make shared secrets possible with symmetric encryption and no pre-share between the client and servers are setting up a service that sends the client a box locked with the clients key that has a key and a second locked box (that the client can’t unlock but the service can) that has a session key for the serviceThe client then forwards along the second locked box as well as well as the authenticator that is locked in a box with the key that was sent to the clientThe service than opens the box the client could not and retrieves the copy of the clients key that could not have been tampered with or copied in transit - thus establishing a shared secret with the client.The clients key is used to open the authenticator that the client created and locked up and makes sure that the info in the authenticator (such as user ID and IP) match the data in msg from kerberos that was locked up with a key that the user did not have.The authenticator also has a timestamp that prevents it from being re-used by some other computer with the same IP later  this id protection against so called replay attacks. The system checks the timestamp of the packet and any timestamp earlier or the same as a previous packet is rejected as well as any timestamp out of sync with the server ny over 5 minutes (so you cant just reset the system time on the client to change the timestamp…)To authenticate the server to the client the server will send a msg encrypted with the user’s session key with the timestamp from the authenticatorConclusionHopefully this brief overview will be useful to someone. As I have been getting more into Active Directory/Windows Server as well as starting to do more security related work at the very least it can be a start to some more detailed posts on Windows network security."
+  },
+  
+  {
+    "title": "200 Days of Trying to Hack",
+    "url": "/posts/200Days-of-THM/",
+    "categories": "technology, security",
+    "tags": "security, hacking, study",
+    "date": "2023-08-14 00:00:00 -0400",
+    
+
+
+
+
+
+    
+    "snippet": "Has a 200 Day Streak on tryhackme.com turned me into a master hacker?No,Though I am proud of the progress I have made.I admit that I have been bitten by the security bug. Given the amount of time I...",
+    "content": "Has a 200 Day Streak on tryhackme.com turned me into a master hacker?No,Though I am proud of the progress I have made.I admit that I have been bitten by the security bug. Given the amount of time I have spent over the last few months reading CVE’s, waiting for gobuster to find something at 2am, finding my thoughts drifting to possible exploits instead of falling asleep… I would still say that I have barely scratched the surface of the field. I should acknowledge that I am still on a free account and have been splitting my time between looking for a job, studying for more traditional IT certifications, and spending time with my family. I know of people who in this amount of time have turned themselves into security professionals, but from what they have written they were putting in far more time into learning pentesting - certainly more than my ‘not quite a room a day’. I did not approach cyber-security as a vocation or possible career, it just seemed like an important field to know a bit about as I started in network administration. While I have noticed a certain obsessiveness creeping into my approach to ‘rooting’ challenge boxes, and my reading of ‘Data Structures and Algorithmic Thinking with Python’ has slowed in favor of working through ‘Black Hat Python’. I still tell myself that it is a leisure time activity.BackgroundI started with tryhackme for their Advent of Cyber event at the end of last year. I had just completed the CCNA and was starting my (still ongoing) job search. While I have the same basic knowledge of security that most people who have some experience with IT develop I felt it was an area that I should put a bit more time into. The event was a lot of fun, I learned a few things, got the nice overview of terms and topics I was looking for and then went back to studying networking, Python, and server administration. Little did I know that this first taste was going to pull me back in and turn into an entire second set of topics to study.My next step down the path to CTFs and boring my wife with trying to explain stack canaries came in the form of deciding to test my Linux skills through Over The Wire After completing Bandit I wanted to keep going. While trying to learn a bit about web security to take on the Natas game I ended up back on TryHackMe, and fairly quickly I found that trying to hack became my ‘just a few more minutes and I will try and get some sleep’ activity. By the time March rolled around I decided to try my hand at the Cyber Apocalypse event hosted by a different cyber-security learning platform Hack The Box and discovered that I enjoyed trying to reverse engineer and exploit binaries. At some point I crossed into being ranked in the top 1% of users of tryhackme and decided that I have spent enough time on the free portion of the site to write this review.Despite all of this I am still not chasing after a specialized ‘hacking’ or ‘cyber’ career. For one thing I want to start getting experience in IT (and a paycheck) as soon as possible. With a CCNA, basic coding and Linux skills, plus what I have picked up from books and platforms like TryHackMe it would take time to get to the point where I could pass a certification like the OSCP or Pentest+. Hopefully the path to a helpdesk analyst or Network admin is going to be shorter. Once I have some experience though I could see myself choosing to get a CCNP Security, or even trying to find out if NetDevSecOps is a good career path.Gamified learningSo what actually is TryHackMe? It is a cyber-security gamified learning platform where you get points for answering questions about the material you have just studied that also includes ‘challenge rooms’ where you try to find a way to get into an intentionally vulnerable computer and escalate to administrative privileges. There are also other activities, leaderboards for the competitive, and learning paths that include a series of lessons and activities that fit together as preparation for certifications or that focus on similar skills. Some of the activities and rooms require a (quite reasonably priced) monthly subscription, though I will need to wait on those until I am back in the workforce. Compared to Hack The Box (the only other platform I have tried) Try Hack Me seems to be more ‘beginner friendly’ and certainly has less focus on competition.I should also mention that for most subjects I prefer learning skills from books over more ‘gamified’ platforms. As an example - for learning the basics of web development (HTML, CSS, JS) I got more out of the readings and projects approach of The Odin Project than I did from the basic curriculum on Free Code Camp As with most skill-building online exercises the material on Try Hack Me, on its own, is not enough to learn the topic. Luckily most of the walkthrough rooms include links to more information on the topic, and often include questions that require you to do some research off-site to answer. The learning-paths include introductory modules that stress the importance of developing research ability and the initiative to chase down information.Who would I recommend the platform toIf you are looking for an easy one stop shop to learn to be a ‘hacker’, red-team, pentester, whatever…. There is no such thing I also don’t get the feeling that completing learning paths on try hack me is a substitute for studying for and getting an industry recognized certification. I will also say that while I have not encountered many ‘bad’ rooms, the amount I of knowledge I have managed to pick up just from the room has varied a lot. What the platform is great for is getting a survey of the field with the free activities, and if you do catch a case of the security bug, it provides a low cost way of of developing the interest while holding your hand and keeping you motivated until you are hooked.Certainly if you are considering cyber-security as a career, and you want some exposure to the jargon and the technologies involved this may be a more interesting way to get that exposure than an intro to cyber-security book. Signing up for an account might also be a good way to get some hands on practice if you are in a more theoretical program. I also think that it is a fun way for an IT professional to get some exposure to some of the topics related to cyber-security. Though if you are trying to advance your career by adding coursework in information-security or want to learn server-hardening and best practices in regards to keeping your users secure, there are probably better ways to learn those skills.I would also recommend not taking advantage of the write-ups until after you have rooted a box. There are several challenge rooms that I have made progress on, even managed to get a user flag, that I realized were above my skill-level. While it would be a relief to not have then show up in my list of joined rooms, I also know that having them there as a reminder of areas where I need to study more (like Windows/AD privilege escalation) benefits me more than reading a walkthrough that I can follow, but not understand.Payed vs FreeIf you just want to play around and see what the site offers the free option is great. I would not recommend trying to seriously develop skills in cyber-security using just free options, and honestly the price of a subscription to Try Hack Me is very reasonable for the content you get. I fully intend to get a subscription as soon as I start working again. I also plan on getting to the point where I can put together a room or two on my own to give back to the community. Another benefit to having a subscription for anyone seriously studying a topic is that it encourages you to ‘get your money’s worth’Going forwardI plan to continue doing challenge boxes, and am starting to take on Hack The Box easy machines. The 2 areas on Try Hack Me where I want to focus are probably going to require that I put in time studying outside sources. The fact of the matter is that I have less experience with Windows servers and Active Directory than I do with Linux, and before I learn how to exploit an AD network I want to spend some time getting better at building one. I also intend to put more time into C and assembly language before trying to get serious about binary exploitation."
+  },
+  
+  {
+    "title": "ppa problems",
+    "url": "/posts/ppa-problems/",
+    "categories": "linux",
+    "tags": "administration",
+    "date": "2023-05-31 22:30:00 -0400",
+    
+
+
+
+
+
+    
+    "snippet": "As an Ubuntu user I have access to a decent range of packages through the standard repositories, unfortunately in many cases these are not exactly the bleeding edge. As a user of a very old laptop ...",
+    "content": "As an Ubuntu user I have access to a decent range of packages through the standard repositories, unfortunately in many cases these are not exactly the bleeding edge. As a user of a very old laptop (at least until I get hired) I also tend to avoid snaps where possible, so for some software I use PPA repositories. Up until recently this has turned out fairly ok, and certainly never prevented me from using my computer.Last week though I finally ran into an issue. The first issue I noticed was with zathura, my pdf reader, not being able to display pdf’s. Since it had been a few days since I had rebooted, and other PDF readers were working fine I decided to ignore it until the end of the day and see if the problem persisted after a reboot. The reboot indicated that there was a bit more of an issue as it hung right before my display manager started. As a bit of background - I am running what started out as bog standard Ubuntu 20.04, while I switched to using I3, then AwesomeWM, and now have started playing around with StumpWM, and long ago stopped using Gnome (4GB memory…) I kept GDM. After poking around in logs for a bit from the TTY I decided to install LightDM and fix the underlying issue later.Researching the problem became a bit easier when I found that Chrome based browsers would not start, and further that they were encountering the same error as zathura - an issue with libnssutil3.so: version NSSUTIL_3.59 not found as being requested by /usr/local/lib/libnss3.so. After reinstalling libnss3 and everything related to it I decided to run ldconfig -p | grep libnss and noticed that I had both a libnss3.so (libc6,x86-64) =&gt; /usr/local/lib/libnss3.so and a libnss3.so (libc6,x86-64) =&gt; /usr/lib/x86_64-linux-gnu/libnss3.so (as well as the copies that Firefox and Thunderbird use) but that I only had a copy of libnssutil3.so in /usr/lib/x86_64-linux-gnu After getting rid of /usr/local/lib/libnss3.so my system started working as normal.Next I decided to try and work out where the copy of libnss3.so that was causing the problem came from. Apparently it was installed by an update of google-chrome-stable that I got from their PPA. What is odd is that I have not found anyone else encountering similar issues."
+  },
+  
+  {
+    "title": "My First CTF",
+    "url": "/posts/my-first-ctf/",
+    "categories": "technology, security",
+    "tags": "ctf, hacking, hackthebox.com",
+    "date": "2023-03-24 14:29:49 -0400",
+    
+
+
+
+
+
+    
+    "snippet": "While I have been playing around on tryhackme.com since Advent of Cyber 2022, my first competitive CTF has been Cyber Apocalypse 2023 - it has been a blast! While I only had a limited amount of tim...",
+    "content": "While I have been playing around on tryhackme.com since Advent of Cyber 2022, my first competitive CTF has been Cyber Apocalypse 2023 - it has been a blast! While I only had a limited amount of time to dedicate to the CTF, I managed to accumulate enough points while getting a feel for things to bring my team (consisting of me) to 1417’th place. Since Hackthebox has been generous enough to keep the servers up a few more days, I am going to see if I can solve some of the challenges I overlooked or didn’t have time for during the competition. Going forward, I’m going to invest some time learning tools like BurpSuite and pwndbg so next time I can take on some of the harder challenges, and maybe even find a team to work with!"
+  },
+  
+  {
+    "title": "Junk",
+    "url": "/posts/junk/",
+    "categories": "technology, homelab",
+    "tags": "hardware",
+    "date": "2023-02-02 00:00:00 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "Old JunkI am trying to get ahead on my spring cleaning and went through the scrap I have left over to see if I can get any use out of it. Not show is an old P4 that is probably not that useful. The...",
+    "content": "Old JunkI am trying to get ahead on my spring cleaning and went through the scrap I have left over to see if I can get any use out of it. Not show is an old P4 that is probably not that useful. The Mackbook Pro has a bad motherboard and I don’t have a re-flow station, or the free time at the moment. The box contains the remnants of a few Core2Duo Mackbooks that I am fairly sure worked… The only thing I am actually sure I am going to try and use is the Dell, it has a bad power supply and no memory. It does have a CPU that supports virtualization and is slightly newer that my current Proxmox box."
+  },
+  
+  {
+    "title": "Red Hat Lab v0.1",
+    "url": "/posts/rhcsa-lab/",
+    "categories": "technology, linux",
+    "tags": "certification, linux",
+    "date": "2023-01-30 13:24:22 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "Initial Planning for Working with RHELSince I am working towards being able to pass the Red Hat Certified System Administrator exam I am going to need to spend some time using RHEL, I have been usi...",
+    "content": "Initial Planning for Working with RHELSince I am working towards being able to pass the Red Hat Certified System Administrator exam I am going to need to spend some time using RHEL, I have been using Debian based systems as my daily driver for over a decade, it has been that long since I switched from Fedora, and while from time to time I have spun up a CentOS VM I am going to need to put in some time doing things the Red Hat way.Looking through a slightly outdated exam guidebook for the RHCSA exam I should only need 2-3 hosts which I could run as VMs on my current setup. While the recommended software seems to be virtual box I am doing this on an Ubuntu machine so I can use KVM virtualization instead. If I end up needing more servers I can always spin them up using LXD (I know it is kind of strange using Canonical’s containerization technology as a lab environment for learning Red Hat) or use Red Hats UBI image for Podman/DockerFor my main ‘workstation’ machine I will use my Red Hat developer account to run an official image. If I end up spinning up more short term VMs/LXD containers I will use Alma or Rocky Linux so that I am not chasing licenses around."
+  },
+  
+  {
+    "title": "Docker Networking Issues",
+    "url": "/posts/docker-networking/",
+    "categories": "technology",
+    "tags": "networking, linux",
+    "date": "2023-01-21 00:00:00 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "Docker Networking IssuesAs part of my ongoing campaign to develop marketable skills I decided to spend some time learning PostgreSQL. The simplest way to get up and running seemed like it would be ...",
+    "content": "Docker Networking IssuesAs part of my ongoing campaign to develop marketable skills I decided to spend some time learning PostgreSQL. The simplest way to get up and running seemed like it would be to use Docker to run the database in a container, this would also let me move to running it on a different computer if my 10+ year old Ubuntu 20.04 laptop wasn’t up to running the database and whatever else I end up connecting to it…And of course a recent update seems to have created issues for Docker, I start the container and start up the GUI client (DBeaver CE) I installed, and quickly notice that I am no longer connected to my home network. After the usual attempts to work out what is going on using Duck Duck Go and random poking at log files, I found the solution in this post on stackoverflow. Apparently it is enough of a known issue that a line to prevent the issue is included in the config file /etc/connman/main.conf (commented out)Now, instead of SQL I am spending the rest of the day studying how Linux networking works (this issue might tie in with some of the issues getting networking on my new Proxmox server working correctly)"
+  },
+  
+  {
+    "title": "Proxmox Setup",
+    "url": "/posts/proxmox-setup/",
+    "categories": "proxmox, linux",
+    "tags": "linux",
+    "date": "2022-11-29 13:41:00 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "I installed Proxmox…The installation went fairly smoothly, other than a ‘Layer 1 issue’ involving my head and my desk while plugging in the ethernet. I also ended up being a bit indecisive about my...",
+    "content": "I installed Proxmox…The installation went fairly smoothly, other than a ‘Layer 1 issue’ involving my head and my desk while plugging in the ethernet. I also ended up being a bit indecisive about my IP addressing scheme and needed to edit /etc/network/interfaces and /etc/hosts. So far so good. It’s alive!…now what?I have been considering getting the Red Hat Certified System Administrator as a required step towards the Kubernetes and OpenShift certifications Red Hat offers. That means spending some time with yum instead of Apt so I downloaded Alma Linux to start exploring. I ran into an issue with the default CPU choice - kvm64 (an abstraction designed to facilitate moving VMs between machines) Switching to using the machines CPU cleared up the issue. Luckily this is a known issue and didn’t take me long to figure out.Playing around with the new install made me regret putting off setting up stow or some other way of quickly installing my dotfiles…Containers within containers within containers….Since I know I am going to want to run Docker containers I have a bit more setup to do. Going by the Proxmox forums there are a few ways people do this. Having the Proxmox host run Docker directly seems like a bad idea, even though my janky little birdy lab is far from a production environment I agree. Since I am trying to keep within my memory budget just setting up a VM just to run application containers is counterproductive, though this is the approach that I thought of first and is the commonly recommended way of doing things.  So it seems like I need to find a LXC container to run my application containers.A few minutes on DDG and I came across TurnKey Linux who used to offer a LXC container that includes a a collection of tools that might be useful. It turns out they even make a template available - that has not been updated in several years and no longer appears in the list of downloadable templates. There focus seems to be more on AWS right now so I will keep them in mind for when I am spending time on Amazon’s cloud.I also found some instructions that informed me that feline based data recovery is not ready for production, but also had Running Docker in LXC With Proxmox 7.1 looks simple (back when I was first getting into Linux you needed to patch your kernel by hand on punch cards uphill in the snow…) and in a few minutes everything is up and running. Almost anti-climactic.Final ThoughtsThe temptation is just to start fooling around and once I get something that works keep it until something goes wrong…. Luckily I plan to upgrade my hardware soon enough that I know I am going to need to redo this soon, so I am going to want to document everything with an eye towards writing a script or Ansible playbook for future installs…To be continued"
+  },
+  
+  {
+    "title": "Choosing a hypervisor",
+    "url": "/posts/choosing-a-hypervisor/",
+    "categories": "technology",
+    "tags": "proxmox, linux",
+    "date": "2022-11-27 22:12:18 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "Why I am Installing ProxmoxIf you want a really simple answer it is because of Linux Containers. Right now I happen to be using a VERY old tower a neighbor was throwing out as my virtualization ser...",
+    "content": "Why I am Installing ProxmoxIf you want a really simple answer it is because of Linux Containers. Right now I happen to be using a VERY old tower a neighbor was throwing out as my virtualization server. With only 8GB of RAM and a single Intel I5 from 2009, I need to be as efficient as possible, and Proxmox seemed like the way to go. Once I am working full time, and I upgrade my homelab, I would like to explore XCP-NG and possibly ESXi, but for now I want to see how much I can get out of what I have.Some of the resources I am using to learn how to use Proxmox  Learn Linux TV has been an excellent source of information and inspiration. The material Jay offers on Proxmox is a great starting point.  Reading the manual is usually a good place to start. The Proxmox VE Admin Guide"
+  },
+  
+  {
+    "title": "CCNA completed, now what?",
+    "url": "/posts/beyond-my-ccna/",
+    "categories": "networking",
+    "tags": "career, ccna",
+    "date": "2022-11-26 21:30:00 -0500",
+    
+
+
+
+
+
+    
+    "snippet": "Exploring the Wide World of NetworkingI recently successfully completed the CCNA through self-study. This has meant that for the last few months I have been focused on networking instead of program...",
+    "content": "Exploring the Wide World of NetworkingI recently successfully completed the CCNA through self-study. This has meant that for the last few months I have been focused on networking instead of programming and that I have invested most of that time in learning Cisco’s IOS. I have also been a Linux enthusiast and occasional sysadmin for well over a decade, and would like to start expanding from basic Linux administration into learning the wider world of Linux networking. Now that I have a bit more leeway in what I spend my time learning I plan to look at some of Cisco’s competitors in the networking space, especially NVIDIA’s Cumulus Linux, Arista’s EOS, and basically anything else that I can legally lab up with GNS3.As with learning anything on practical in the Internet the first major challenge is picking a starting point. Over the next few weeks (job search permitting) I plan to start adding some posts with links to the resources I come across, walkthrough outlining any tricks to setting up an environment to experiment with ‘white-box’ networking, and any ideas for real-world applications I come across"
+  }
+  
+]
+

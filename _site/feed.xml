@@ -1,0 +1,207 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://jonas-bird.github.io/</id>
+  <title>Jonas Bird's Lab</title>
+  <subtitle>I am a long-term Linux enthusiast, looking for a job in networking (recent CCNA!) or IT automation. In my free time I enjoy coding,  audio recording equipment/synthesizers, Lisp, and learning how things work. Getting my hands dirty in the cloud and looking for work.</subtitle>
+  <updated>2025-07-16T20:55:46-04:00</updated>
+  <author>
+    <name>Jonas Bird</name>
+    <uri>https://jonas-bird.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://jonas-bird.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://jonas-bird.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2025 Jonas Bird </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Learn Wireshark</title>
+    <link href="https://jonas-bird.github.io/posts/learn-wireshark/" rel="alternate" type="text/html" title="Learn Wireshark" />
+    <published>2025-02-01T01:01:01-05:00</published>
+  
+    <updated>2025-07-16T19:19:08-04:00</updated>
+  
+    <id>https://jonas-bird.github.io/posts/learn-wireshark/</id>
+    <content src="https://jonas-bird.github.io/posts/learn-wireshark/" />
+    <author>
+      <name>Jonas Bird</name>
+    </author>
+
+  
+    
+    <category term="networking" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Note
+
+There are way to many ‘Wireshark Deep Dive’ articles that cover the same introductory material (how to capture from your ethernet port, a basic explanation of display filters, and how to follow a conversation). I have no intention of adding to the noise, and am not at the point where I can offer anything better than the current experts. What I am providing is a list of some resources I fo...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>What is Kerberos?</title>
+    <link href="https://jonas-bird.github.io/posts/Kerberos/" rel="alternate" type="text/html" title="What is Kerberos?" />
+    <published>2023-10-23T14:50:01-04:00</published>
+  
+    <updated>2025-07-16T19:53:39-04:00</updated>
+  
+    <id>https://jonas-bird.github.io/posts/Kerberos/</id>
+    <content src="https://jonas-bird.github.io/posts/Kerberos/" />
+    <author>
+      <name>Jonas Bird</name>
+    </author>
+
+  
+    
+    <category term="security" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      What is Kerberos?
+
+I first encountered Kerberos the summer before going off to Carnegie Mellon University. I received an email with instructions on getting access to the campus network that included setting up Kerberos. Despite being one of the few students taking programming courses at my high school, and being part of the team that went to a state wide programming competition, this was a new ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>200 Days of Trying to Hack</title>
+    <link href="https://jonas-bird.github.io/posts/200Days-of-THM/" rel="alternate" type="text/html" title="200 Days of Trying to Hack" />
+    <published>2023-08-14T00:00:00-04:00</published>
+  
+    <updated>2025-07-16T20:13:53-04:00</updated>
+  
+    <id>https://jonas-bird.github.io/posts/200Days-of-THM/</id>
+    <content src="https://jonas-bird.github.io/posts/200Days-of-THM/" />
+    <author>
+      <name>Jonas Bird</name>
+    </author>
+
+  
+    
+    <category term="technology" />
+    
+    <category term="security" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Has a 200 Day Streak on tryhackme.com turned me into a master hacker?
+
+No,
+
+Though I am proud of the progress I have made.
+
+I admit that I have been bitten by the security bug. Given the amount of time I have spent over the last few months reading CVE’s, waiting for gobuster to find something at 2am, finding my thoughts drifting to possible exploits instead of falling asleep… I would still say ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>ppa problems</title>
+    <link href="https://jonas-bird.github.io/posts/ppa-problems/" rel="alternate" type="text/html" title="ppa problems" />
+    <published>2023-05-31T22:30:00-04:00</published>
+  
+    <updated>2023-05-31T22:30:00-04:00</updated>
+  
+    <id>https://jonas-bird.github.io/posts/ppa-problems/</id>
+    <content src="https://jonas-bird.github.io/posts/ppa-problems/" />
+    <author>
+      <name>Jonas Bird</name>
+    </author>
+
+  
+    
+    <category term="linux" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      As an Ubuntu user I have access to a decent range of packages through the standard repositories, unfortunately in many cases these are not exactly the bleeding edge. As a user of a very old laptop (at least until I get hired) I also tend to avoid snaps where possible, so for some software I use PPA repositories. Up until recently this has turned out fairly ok, and certainly never prevented me f...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>My First CTF</title>
+    <link href="https://jonas-bird.github.io/posts/my-first-ctf/" rel="alternate" type="text/html" title="My First CTF" />
+    <published>2023-03-24T14:29:49-04:00</published>
+  
+    <updated>2023-03-24T15:07:57-04:00</updated>
+  
+    <id>https://jonas-bird.github.io/posts/my-first-ctf/</id>
+    <content src="https://jonas-bird.github.io/posts/my-first-ctf/" />
+    <author>
+      <name>Jonas Bird</name>
+    </author>
+
+  
+    
+    <category term="technology" />
+    
+    <category term="security" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      While I have been playing around on tryhackme.com since Advent of Cyber 2022, my first competitive CTF has been Cyber Apocalypse 2023 - it has been a blast! While I only had a limited amount of time to dedicate to the CTF, I managed to accumulate enough points while getting a feel for things to bring my team (consisting of me) to 1417’th place. Since Hackthebox has been generous enough to keep ...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
