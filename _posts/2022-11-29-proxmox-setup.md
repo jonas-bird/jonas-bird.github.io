@@ -2,7 +2,7 @@
 title: Proxmox Setup  
 date: 2022-11-29 13:41:00 -0500  
 categories: [proxmox, linux]  
-tags: [career, ccna, networking, linux, it]       # TAG names should always be lowercase
+tags: [linux]       # TAG names should always be lowercase
 toc: false  
 ---
 

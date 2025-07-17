@@ -1,8 +1,8 @@
 ---
 title: Docker Networking Issues
 date: 2023-01-21 
-categories: [technology, homelab]
-tags: [docker, networking, linux, troubleshooting]
+categories: [technology]
+tags: [networking, linux]
 ---
 
 # Docker Networking Issues 

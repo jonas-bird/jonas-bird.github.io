@@ -1,8 +1,8 @@
 ---
 title: CCNA completed, now what?   
 date: 2022-11-26 21:30:00 -0500  
-categories: [networking, linux]  
-tags: [career, ccna, networking, linux, it]     # TAG names should always be lowercase
+categories: [networking]  
+tags: [career, ccna]     # TAG names should always be lowercase
 toc: false
 ---
 
