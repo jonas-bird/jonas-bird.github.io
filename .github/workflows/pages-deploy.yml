@@ -55,7 +55,8 @@ jobs:
           bundle exec htmlproofer _site \
             \-\-disable-external \
             \-\-url-ignore "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
-            \–\-allow_hash_href 
+            \–\-allow_hash_href \
+            \-\-assume-extension
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
